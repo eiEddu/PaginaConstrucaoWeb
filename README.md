@@ -6,25 +6,25 @@ de atividades.
 
 ## Requisitos Obrigatórios de cada campo 
 Atividades:
-● Nome
-● Descrição
-● Data de início
-● Data de fim (opcional)
-● Categoria (enum de opções, por exemplo: Estudo, Trabalho, Lazer, Pesquisa)
+* Nome
+* Descrição
+* Data de início
+* Data de fim (opcional)
+* Categoria (enum de opções, por exemplo: Estudo, Trabalho, Lazer, Pesquisa)
 
 Usuários:
-● Nome Completo
-● E-mail
+* Nome Completo
+* E-mail
 
 ## Condições do Trabalho:
-● Cada atividade pode estar vinculada a um ou mais usuários.
-● Um usuário pode não ter nenhuma atividade ou estar associado a várias.
+* Cada atividade pode estar vinculada a um ou mais usuários.
+* Um usuário pode não ter nenhuma atividade ou estar associado a várias.
 
 ## Relatórios:
-o Listar todas as atividades criadas.
-o Listar todas as atividades de uma categoria.
-o Listar todas as atividade de um usuário.
-● Controle de Status: gerenciar o ciclo de vida de uma atividade (Ex: Pendente,
+* Listar todas as atividades criadas.
+* Listar todas as atividades de uma categoria.
+* Listar todas as atividade de um usuário.
+* Controle de Status: gerenciar o ciclo de vida de uma atividade (Ex: Pendente,
 Em andamento, Concluída, Cancelada).
 
 
