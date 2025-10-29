@@ -32,11 +32,24 @@
       </div>
     </div>
 
-    <button type="submit" class="btn btn-primary">
+    <div class="mb-3">
+      <label class="form-label">Contato</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="contato"
+        placeholder="Ex: (55) 9 9999-9999"
+      />
+      <div class="text-danger small" *ngIf="usuarioForm.get('contato')?.invalid && usuarioForm.get('contato')?.touched">
+        Informe um contato válido (mínimo 11 caracteres)
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary mb-2">
       {{ editMode ? 'Salvar Alterações' : 'Cadastrar Usuário' }}
     </button>
 
-    <a class="btn btn-secondary ms-2" [routerLink]="['/usuarios/listar']">
+    <a class="btn btn-secondary" [routerLink]="['/usuarios/listar']">
       Cancelar
     </a>
 

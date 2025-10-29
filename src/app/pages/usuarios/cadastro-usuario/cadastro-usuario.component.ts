@@ -29,7 +29,8 @@ export class CadastroUsuarioComponent implements OnInit {
     // monta o formulário reativo
     this.usuarioForm = this.fb.group({
       nomeCompleto: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.email]]
+      email: ['', [Validators.required, Validators.email]],
+      contato: ['',[Validators.required,Validators.minLength(11)]]
     });
 
     // verifica se estamos em /usuarios/editar/:id
@@ -43,7 +44,8 @@ export class CadastroUsuarioComponent implements OnInit {
         if (usuario) {
           this.usuarioForm.patchValue({
             nomeCompleto: usuario.nomeCompleto,
-            email: usuario.email
+            email: usuario.email,
+            contato: usuario.contato
           });
         }
       }
@@ -64,7 +66,8 @@ export class CadastroUsuarioComponent implements OnInit {
     // monta objeto Usuario a partir do form
     const dados: Usuario = {
       nomeCompleto: this.usuarioForm.value.nomeCompleto,
-      email: this.usuarioForm.value.email
+      email: this.usuarioForm.value.email,
+      contato: this.usuarioForm.value.contato
     };
 
     try {
