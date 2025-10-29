@@ -1,15 +1,16 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Router, ActivatedRoute, RouterLink } from '@angular/router'; // <— importa RouterLink
+import { Router, ActivatedRoute, RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
 
 import { UsuarioService } from '../../../services/usuario.service';
 import { Usuario } from '../../../models/usuario.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-cadastro-usuario',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink], // <— adiciona RouterLink aqui
+  imports: [ReactiveFormsModule, RouterLink,CommonModule],
   templateUrl: './cadastro-usuario.component.html',
   styleUrls: ['./cadastro-usuario.component.css']
 })
