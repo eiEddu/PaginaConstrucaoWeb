@@ -25,14 +25,14 @@
     </div>
 
     <div class="row">
-      <div class="col-md-4 mb-3">
+      <div class="col-md-6 mb-3">
         <label class="form-label">Categoria</label>
         <select class="form-select" formControlName="categoria">
           <option *ngFor="let c of categoriaOptions" [ngValue]="c">{{ c }}</option>
         </select>
       </div>
 
-      <div class="col-md-4 mb-3">
+      <div class="col-md-6 mb-3">
         <label class="form-label">Status</label>
         <select class="form-select" formControlName="status">
           <option *ngFor="let s of statusOptions" [ngValue]="s">{{ s }}</option>

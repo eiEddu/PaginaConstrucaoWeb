@@ -1,0 +1,71 @@
+<div class="container mt-4" *ngIf="!carregando">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Atividades de {{ usuario?.nomeCompleto }}</h2>
+    <div class="d-flex gap-2">
+      <button class="btn btn-outline-success" (click)="toggleForm()">
+        {{ mostrarForm ? 'Fechar formulário' : '+ Vincular Atividade' }}
+      </button>
+      <a class="btn btn-secondary" routerLink="/usuarios/listar">Voltar</a>
+    </div>
+  </div>
+
+  <!-- Form de vínculo (toggle com *ngIf) -->
+  <form *ngIf="mostrarForm" [formGroup]="form" (ngSubmit)="salvarVinculo()" class="card p-3 mb-3 shadow-sm">
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label class="form-label">Atividade</label>
+        <select class="form-select" formControlName="atividadeId">
+          <option value="" disabled>Selecione...</option>
+          <option *ngFor="let a of atividades" [value]="a.id">{{ a.descricao }}</option>
+        </select>
+      </div>
+
+      <div class="col-md-3">
+        <label class="form-label">Data</label>
+        <input type="date" class="form-control" formControlName="data">
+      </div>
+
+      <div class="col-md-3">
+        <label class="form-label">Hora</label>
+        <input type="time" class="form-control" formControlName="hora">
+      </div>
+    </div>
+
+    <div class="mt-3">
+      <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Salvar</button>
+      <button class="btn btn-outline-secondary ms-2" type="button" (click)="toggleForm()">Cancelar</button>
+    </div>
+  </form>
+
+  <!-- Tabela de vínculos -->
+  <table class="table table-sm table-striped" *ngIf="participacoes.length > 0">
+    <thead>
+      <tr>
+        <th>Atividade</th>
+        <th>Categoria</th>
+        <th>Data</th>
+        <th>Hora</th>
+        <th style="width: 100px;">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of participacoes">
+        <td>{{ p.atividade?.descricao }}</td>
+        <td>{{ p.atividade?.categoria }}</td>
+        <td>{{ p.data }}</td>
+        <td>{{ p.hora }}</td>
+        <td>
+          <button class="btn btn-sm btn-outline-danger" (click)="removerVinculo(p)">Remover</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="alert alert-light" *ngIf="participacoes.length === 0">
+    Nenhum vínculo encontrado.
+  </div>
+</div>
+
+<div class="container mt-4" *ngIf="carregando">
+  Carregando...
+</div>
