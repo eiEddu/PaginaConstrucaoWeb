@@ -1,1 +1,59 @@
-<p>cadastro-atividade works!</p>
+<div class="container mt-4">
+  <h2 class="mb-3">
+    {{ editMode ? 'Editar Atividade' : 'Cadastrar Atividade' }}
+  </h2>
+
+  <form [formGroup]="atividadeForm" (ngSubmit)="salvar()" class="card p-3 shadow-sm">
+
+    <div class="mb-3">
+      <label class="form-label">Descrição</label>
+      <textarea class="form-control" rows="3" formControlName="descricao" placeholder="Ex: Treino de passe e finalização"></textarea>
+      <div class="text-danger small" *ngIf="atividadeForm.get('descricao')?.invalid && atividadeForm.get('descricao')?.touched">
+        Informe uma descrição válida (mínimo 3 caracteres)
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Data de início</label>
+        <input type="date" class="form-control" formControlName="dataInicio">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Data de fim</label>
+        <input type="date" class="form-control" formControlName="dataFim">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <label class="form-label">Categoria</label>
+        <select class="form-select" formControlName="categoria">
+          <option *ngFor="let c of categoriaOptions" [ngValue]="c">{{ c }}</option>
+        </select>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label class="form-label">Status</label>
+        <select class="form-select" formControlName="status">
+          <option *ngFor="let s of statusOptions" [ngValue]="s">{{ s }}</option>
+        </select>
+      </div>
+
+      <!-- <div class="col-md-4 mb-3">
+        <label class="form-label">Responsáveis (múltiplos)</label>
+        <select class="form-select" multiple formControlName="usuariosIds">
+          <option *ngFor="let u of usuarios" [ngValue]="u.id">{{ u.nomeCompleto }}</option>
+        </select>
+        <div class="text-danger small" *ngIf="atividadeForm.get('usuariosIds')?.invalid && atividadeForm.get('usuariosIds')?.touched">
+          Selecione ao menos um responsável
+        </div>
+      </div> -->
+    </div>
+
+    <button type="submit" class="btn btn-primary mb-2">
+      {{ editMode ? 'Salvar Alterações' : 'Cadastrar Atividade' }}
+    </button>
+
+    <a class="btn btn-secondary" routerLink="/atividades/listar">Cancelar</a>
+  </form>
+</div>

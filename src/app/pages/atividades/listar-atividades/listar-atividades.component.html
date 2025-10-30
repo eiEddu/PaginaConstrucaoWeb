@@ -1,1 +1,70 @@
-<p>listar-atividades works!</p>
+<div class="container mt-4">
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Atividades</h2>
+    <a class="btn btn-success" routerLink="/atividades/cadastrar">+ Nova Atividade</a>
+  </div>
+
+  <!-- Filtros -->
+  <div class="card p-3 mb-3">
+    <div class="row g-3 align-items-end">
+
+      <div class="col-md-4">
+        <label class="form-label">Status</label>
+        <select class="form-select" [(ngModel)]="filtroStatus" (change)="aplicarFiltros()">
+          <option *ngFor="let s of statusOptions" [ngValue]="s">{{ s }}</option>
+        </select>
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label">Categoria</label>
+        <select class="form-select" [(ngModel)]="filtroCategoria" (change)="aplicarFiltros()">
+          <option *ngFor="let c of categoriaOptions" [ngValue]="c">{{ c }}</option>
+        </select>
+      </div>
+
+      <!-- <div class="col-md-4">
+        <label class="form-label">Responsável</label>
+        <select class="form-select" [(ngModel)]="filtroUsuarioId" (change)="aplicarFiltros()">
+          <option *ngFor="let u of usuarioOptions" [ngValue]="u.id">{{ u.nomeCompleto }}</option>
+        </select>
+      </div> -->
+
+    </div>
+  </div>
+
+  <div *ngIf="carregando">Carregando...</div>
+
+  <table class="table table-striped table-hover" *ngIf="!carregando && filtradas.length > 0">
+    <thead>
+      <tr>
+        <th>Descrição</th>
+        <th>Categoria</th>
+        <th>Status</th>
+        <th>Responsáveis</th>
+        <th>Início</th>
+        <th>Fim</th>
+        <th style="width: 140px;">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let a of filtradas">
+        <td>{{ a.descricao }}</td>
+        <td>{{ a.categoria }}</td>
+        <td><span [class]="badgeClass(a.status)">{{ a.status }}</span></td>
+        <td>{{ nomesResponsaveis(a.usuariosIds) }}</td>
+        <td>{{ a.dataInicio }}</td>
+        <td>{{ a.dataFim || '-' }}</td>
+        <td>
+          <a class="btn btn-sm btn-primary me-2" [routerLink]="['/atividades/editar', a.id]">Editar</a>
+          <button class="btn btn-sm btn-danger" (click)="excluir(a)">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="alert alert-info" *ngIf="!carregando && filtradas.length === 0">
+    Nenhuma atividade encontrada com os filtros selecionados.
+  </div>
+
+</div>
