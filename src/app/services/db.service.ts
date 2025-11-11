@@ -2,27 +2,25 @@ import { Injectable } from '@angular/core';
 import Dexie, { Table } from 'dexie';
 import { Usuario } from '../models/usuario.model';
 import { Atividade } from '../models/atividade.model';
+import { Participacao } from '../models/participacao.model';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class DbService extends Dexie {
-  // tabelas
   usuarios!: Table<Usuario, number>;
   atividades!: Table<Atividade, number>;
+  participacoes!: Table<Participacao, number>;
 
   constructor() {
     super('GestorAtividadesDB');
 
-    // version() define o esquema das "tabelas" no IndexedDB
     this.version(1).stores({
-      // '++id' = chave primária auto-incremental
       usuarios: '++id, nomeCompleto, email',
-      atividades: '++id, descricao, dataInicio, dataFim, categoria, status, usuariosIds'
+      atividades: '++id, descricao, dataInicio, dataFim, categoria, status',
+      participacoes: '++id, usuarioId, atividadeId, data, hora'
     });
 
-    // mapeia as tabelas para o this.usuarios / this.atividades
     this.usuarios = this.table('usuarios');
     this.atividades = this.table('atividades');
+    this.participacoes = this.table('participacoes');
   }
 }

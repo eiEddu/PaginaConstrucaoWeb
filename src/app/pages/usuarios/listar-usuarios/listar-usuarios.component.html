@@ -1,44 +1,144 @@
 <div class="container mt-4">
-
   <div class="d-flex justify-content-between align-items-center mb-3">
-    <h2>Usuários</h2>
-    <a class="btn btn-success" [routerLink]="['/usuarios/cadastrar']">
-      + Novo Usuário
-    </a>
+    <h2>Sócios</h2>
+    <a class="btn btn-success" routerLink="/usuarios/cadastrar">+ Novo Sócio</a>
   </div>
+
+  <!-- (PESQUISA) deixamos pra quando você disser -->
+  <!-- placeholder opcional depois -->
 
   <div *ngIf="carregando">Carregando...</div>
 
-  <table class="table table-striped table-hover" *ngIf="!carregando && usuarios.length > 0">
+  <table class="table table-striped table-hover " *ngIf="!carregando && usuarios.length > 0">
     <thead>
       <tr>
-        <th>Matrícula</th>
         <th>Nome completo</th>
         <th>E-mail</th>
         <th>Contato</th>
-        <th style="width: 140px;">Ações</th>
+        <th style="width: 280px;">Ações</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let u of usuarios">
-        <td> {{ u.id }}</td>
         <td>{{ u.nomeCompleto }}</td>
         <td>{{ u.email }}</td>
         <td>{{ u.contato }}</td>
-        <td>
-          <button class="btn btn-sm btn-primary me-2" (click)="editar(u)">
-            Editar
-          </button>
-          <button class="btn btn-sm btn-danger" (click)="excluir(u)">
-            Excluir
-          </button>
+        <td class="d-flex gap-2">
+          <a class="btn btn-sm btn-primary d-inline-flex align-items-center justify-content-center" [routerLink]="['/usuarios/editar', u.id]">Editar</a>
+          <button class="btn btn-sm btn-danger" (click)="excluir(u)">Excluir</button>
+
+          <!-- VER ATIVIDADES -->
+          <button class="btn btn-sm btn-outline-secondary"
+                  (click)="abrirVerAtividades(u, verAtividadesModal)">Ver Atividades</button>
+
+          <!-- CADASTRAR ATIVIDADE -->
+          <button class="btn btn-sm btn-outline-success"
+                  (click)="abrirCadastrarAtividade(u, cadastrarAtividadeModal)">Cadastrar Atividade</button>
         </td>
       </tr>
     </tbody>
   </table>
 
   <div class="alert alert-info" *ngIf="!carregando && usuarios.length === 0">
-    Nenhum usuário cadastrado ainda.
+    Nenhum sócio cadastrado ainda.
   </div>
+</div>
 
+<!-- Modal: Ver Atividades do Sócio -->
+<div class="modal fade" #verAtividadesModal tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          Atividades de {{ usuarioSelecionado?.nomeCompleto }}
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+
+      <div class="modal-body">
+        <div *ngIf="participacoes.length === 0" class="alert alert-light">
+          Nenhum vínculo encontrado.
+        </div>
+
+        <table class="table table-sm" *ngIf="participacoes.length > 0">
+          <thead>
+            <tr>
+              <th>Atividade</th>
+              <th>Categoria</th>
+              <th>Data</th>
+              <th>Hora</th>
+              <th style="width: 80px;">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let p of participacoes">
+              <td>{{ p.atividade?.descricao }}</td>
+              <td>{{ p.atividade?.categoria }}</td>
+              <td>{{ p.data }}</td>
+              <td>{{ p.hora }}</td>
+              <td>
+                <button class="btn btn-sm btn-outline-danger" (click)="excluirParticipacao(p)">Remover</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Cadastrar Atividade para o Sócio -->
+<div class="modal fade" #cadastrarAtividadeModal tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <form [formGroup]="formVinculo" (ngSubmit)="salvarVinculo(cadastrarAtividadeModal)">
+        <div class="modal-header">
+          <h5 class="modal-title">Vincular Atividade</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        </div>
+
+        <div class="modal-body">
+          <div class="mb-2">
+            <label class="form-label">Atividade</label>
+            <select class="form-select" formControlName="atividadeId">
+              <option value="" disabled>Selecione...</option>
+              <option *ngFor="let a of atividades" [value]="a.id">
+                {{ a.descricao }}
+              </option>
+            </select>
+          </div>
+
+          <div class="mb-2">
+            <label class="form-label">Data</label>
+            <input type="date" class="form-control" formControlName="data">
+          </div>
+
+          <div class="mb-2">
+            <label class="form-label">Hora</label>
+            <input type="time" class="form-control" formControlName="hora">
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-primary" type="submit" [disabled]="formVinculo.invalid">
+            Salvar
+          </button>
+          <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">
+            Cancelar
+          </button>
+        </div>
+
+        
+        <!-- DEBUG FORM
+        <div class="px-3 pb-2 small text-muted">
+          status: {{ formVinculo.status }} | value: {{ formVinculo.value | json }}
+        </div> -->
+        
+      </form>
+    </div>
+  </div>
 </div>
