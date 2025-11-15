@@ -111,6 +111,7 @@ export class ListarUsuariosComponent implements OnInit {
   }
 
   async salvarVinculo(modalRef: HTMLElement) {
+    
     if (!this.usuarioSelecionado?.id) return;
 
     // se ainda estiver inválido, nem tenta salvar

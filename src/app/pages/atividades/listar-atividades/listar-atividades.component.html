@@ -44,7 +44,7 @@
         <td>{{ a.dataFim || '-' }}</td>
 
         <td class="d-flex gap-2">
-          <a class="btn btn-sm btn-primary d-inline-flex align-items-center justify-content-center" [routerLink]="['/usuarios/editar', a.id]">Editar</a>
+          <a class="btn btn-sm btn-primary d-inline-flex align-items-center justify-content-center" [routerLink]="['/atividades/editar', a.id]">Editar</a>
           <button class="btn btn-sm btn-danger" (click)="excluir(a)">Excluir</button>
         </td>
       </tr>

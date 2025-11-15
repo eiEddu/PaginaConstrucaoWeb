@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+.header-slide {
+    height: 800px; /* altura do header */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4); /* escurece para o texto aparecer */
+}
+
+.header-content {
+    position: relative;
+    z-index: 2;
+}
+
+.header-slide .header-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

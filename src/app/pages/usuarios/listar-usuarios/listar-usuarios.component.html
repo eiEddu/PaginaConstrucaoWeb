@@ -24,16 +24,17 @@
         <td>{{ u.email }}</td>
         <td>{{ u.contato }}</td>
         <td class="d-flex gap-2">
-          <a class="btn btn-sm btn-primary d-inline-flex align-items-center justify-content-center" [routerLink]="['/usuarios/editar', u.id]">Editar</a>
+          <a class="btn btn-sm btn-primary d-inline-flex align-items-center justify-content-center"
+            [routerLink]="['/usuarios/editar', u.id]">Editar</a>
           <button class="btn btn-sm btn-danger" (click)="excluir(u)">Excluir</button>
 
           <!-- VER ATIVIDADES -->
-          <button class="btn btn-sm btn-outline-secondary"
-                  (click)="abrirVerAtividades(u, verAtividadesModal)">Ver Atividades</button>
+          <button class="btn btn-sm btn-outline-secondary" (click)="abrirVerAtividades(u, verAtividadesModal)">Ver
+            Atividades</button>
 
           <!-- CADASTRAR ATIVIDADE -->
           <button class="btn btn-sm btn-outline-success"
-                  (click)="abrirCadastrarAtividade(u, cadastrarAtividadeModal)">Cadastrar Atividade</button>
+            (click)="abrirCadastrarAtividade(u, cadastrarAtividadeModal)">Cadastrar Atividade</button>
         </td>
       </tr>
     </tbody>
@@ -95,13 +96,15 @@
 <div class="modal fade" #cadastrarAtividadeModal tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
-      <form [formGroup]="formVinculo" (ngSubmit)="salvarVinculo(cadastrarAtividadeModal)">
-        <div class="modal-header">
-          <h5 class="modal-title">Vincular Atividade</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
-        </div>
 
-        <div class="modal-body">
+      <div class="modal-header">
+        <h5 class="modal-title">Vincular Atividade</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+
+      <div class="modal-body">
+
+        <form *ngIf="formVinculo" [formGroup]="formVinculo" (ngSubmit)="salvarVinculo(cadastrarAtividadeModal)">
           <div class="mb-2">
             <label class="form-label">Atividade</label>
             <select class="form-select" formControlName="atividadeId">
@@ -121,24 +124,31 @@
             <label class="form-label">Hora</label>
             <input type="time" class="form-control" formControlName="hora">
           </div>
-        </div>
-
-        <div class="modal-footer">
           <button class="btn btn-primary" type="submit" [disabled]="formVinculo.invalid">
             Salvar
           </button>
           <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">
             Cancelar
           </button>
-        </div>
+        </form>
+  
+      </div>
 
+      <div class="modal-footer">
         
-        <!-- DEBUG FORM
-        <div class="px-3 pb-2 small text-muted">
-          status: {{ formVinculo.status }} | value: {{ formVinculo.value | json }}
-        </div> -->
-        
-      </form>
+      </div>
+      
+
+
+      <!-- <div class="px-3 pb-2 small text-muted">
+        <ul>
+          <li>Status: {{ formVinculo.status }}</li>
+          <li>Valores: {{ formVinculo.value | json }}</li>
+        </ul>
+
+      </div> -->
+
+
     </div>
   </div>
 </div>
