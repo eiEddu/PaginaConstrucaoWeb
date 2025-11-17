@@ -70,7 +70,7 @@ export class ListarAtividadesComponent implements OnInit {
 
   badgeClass(status: StatusAtividade): string {
     switch (status) {
-      case StatusAtividade.PENDENTE:      return 'badge bg-warning text-dark';
+      case StatusAtividade.AGUARDANDO_ALUNOS:      return 'badge bg-warning text-dark';
       case StatusAtividade.EM_ANDAMENTO:  return 'badge bg-primary';
       case StatusAtividade.CONCLUIDA:     return 'badge bg-success';
       case StatusAtividade.CANCELADA:     return 'badge bg-secondary';

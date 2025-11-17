@@ -10,7 +10,7 @@
   <form [formGroup]="atividadeForm" (ngSubmit)="salvar()" class="card p-3 shadow-sm">
 
     <div class="mb-3">
-      <label class="form-label">Descrição</label>
+      <label class="form-label">Nome/Descrição</label>
       <textarea class="form-control" rows="3" formControlName="descricao" placeholder="Ex: Treino de fundamentos"></textarea>
       <div class="text-danger small" *ngIf="atividadeForm.get('descricao')?.invalid && atividadeForm.get('descricao')?.touched">
         Informe uma descrição válida (mínimo 3 caracteres)

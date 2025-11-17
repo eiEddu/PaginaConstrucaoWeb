@@ -35,7 +35,7 @@ export class CadastroAtividadeComponent implements OnInit {
       dataInicio: ['', Validators.required],
       dataFim: [''],
       categoria: [CategoriaAtividade.FUTEBOL, Validators.required],
-      status: [StatusAtividade.PENDENTE, Validators.required]
+      status: [StatusAtividade.AGUARDANDO_ALUNOS, Validators.required]
     });
 
     this.route.paramMap.subscribe(async params => {
