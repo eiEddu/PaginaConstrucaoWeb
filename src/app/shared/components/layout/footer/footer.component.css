@@ -1,0 +1,15 @@
+:host {
+  display: block;
+}
+
+.app-footer {
+  background: #020617;          /* bem escuro (quase preto azulado) */
+  color: #e5e7eb;               /* cinza bem claro pro texto */
+  border-top: 1px solid #111827;/* linha discreta separando do conteúdo */
+}
+
+/* opcional: deixa o texto um pouco menor e mais suave */
+.app-footer small {
+  font-size: 13px;
+  letter-spacing: 0.03em;
+}

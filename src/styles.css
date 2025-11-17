@@ -1,28 +1,149 @@
-.header-slide {
-    height: 800px; /* altura do header */
-    background-size: cover;
-    background-position: center;
-    position: relative;
-}
 
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.4); /* escurece para o texto aparecer */
-}
-
-.header-content {
-    position: relative;
-    z-index: 2;
-}
-
-.header-slide .header-img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
+html, body {
   height: 100%;
-  object-fit: cover;
 }
+
+body {
+  margin: 0;              /* tira a borda branca padrão */
+  background: #111827;    /* fundo fallback, caso algo não pinte */
+}
+
+
+
+/* Seção de atalhos no lugar do banner */
+.atalhos-header {
+    padding: 60px 0;
+    background: linear-gradient(135deg, #111827, #1f2933); /* fundo escuro esportivo */
+}
+
+/* Card quadrado clicável */
+.atalho-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 180px;
+    background-color: #f9fafb;
+    border-radius: 16px;
+    text-align: center;
+    text-decoration: none; /* tira sublinhado do link */
+    color: #111827;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    padding: 20px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+/* Ícone grande */
+.atalho-icon {
+    font-size: 40px;
+    margin-bottom: 12px;
+}
+
+/* Título do card */
+.atalho-card h2 {
+    font-size: 18px;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+/* Texto de apoio */
+.atalho-card p {
+    font-size: 14px;
+    margin: 0;
+    color: #4b5563;
+}
+
+/* Efeito hover */
+.atalho-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.2);
+    background-color: #ffffff;
+}
+
+/* Responsivo em telas menores (já usando grid do Bootstrap com col-*) */
+/* Se quiser forçar espaçamento entre linhas em mobile: */
+@media (max-width: 576px) {
+    .atalhos-header {
+        padding: 40px 0;
+    }
+}
+
+/* Versão maior dos cards (2 por linha) */
+.atalho-card-grande {
+    min-height: 230px; /* aumenta a altura */
+    padding: 28px;     /* um pouco mais de respiro */
+}
+
+.atalho-card-grande h2 {
+    font-size: 20px;
+}
+
+.atalho-card-grande p {
+    font-size: 15px;
+}
+.atalho-card {
+    display: block;            /* garante que o link vira um bloco inteiro */
+    cursor: pointer;           /* mãozinha */
+}
+.btn-voltar-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 8px 18px;
+  border-radius: 999px; /* formato de pílula */
+  border: 1px solid #9ca3af;
+
+  background: linear-gradient(135deg, #f9fafb, #e5e7eb);
+  color: #111827;
+  font-weight: 500;
+  font-size: 14px;
+  text-decoration: none;
+
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease,
+    border-color 0.15s ease;
+  cursor: pointer;
+}
+
+.btn-voltar-home-icone {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid #d1d5db;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 15px;
+  background-color: #ffffff;
+}
+
+.btn-voltar-home-texto {
+  letter-spacing: 0.02em;
+}
+
+/* Hover */
+.btn-voltar-home:hover {
+  background: linear-gradient(135deg, #e5e7eb, #d1d5db);
+  border-color: #6b7280;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+  transform: translateY(-1px);
+}
+
+/* Active (quando clica segurando) */
+.btn-voltar-home:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+
+/* Foco acessível */
+.btn-voltar-home:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+

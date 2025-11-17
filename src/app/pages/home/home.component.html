@@ -1,64 +1,58 @@
-<div id="headerCarousel" class="carousel slide" data-bs-interval="false">
-  <div class="carousel-inner">
+<!-- HEADER COM 4 QUADRADOS GRANDES / 2 POR LINHA -->
+<section class="atalhos-header">
+  <div class="container">
+    <div class="row g-4 justify-content-center">
 
-    <!-- Futebol -->
-    <div class="carousel-item active">
-      <div class="header-slide">
-    <img src="assets/imagens/futebol.jpg" alt="Futebol" class="header-img">
-        <div class="overlay"></div>
-        <div class="container d-flex flex-column justify-content-center align-items-center header-content">
-          <h1 class="text-center text-white">Campos de Futebol</h1>
-          <h2 class="text-center text-white">Contamos com os melhores campos</h2>
-        </div>
+      <!-- Cadastrar Usuários -->
+      <div class="col-12 col-md-6">
+        <a
+          class="atalho-card atalho-card-grande"
+          routerLink="/usuarios/cadastrar"
+        >
+          <div class="atalho-icon">👤➕</div>
+          <h2>Cadastrar Usuários</h2>
+          <p>Inclua novos usuários no sistema.</p>
+        </a>
       </div>
-    </div>
-    
-    <!-- Tênis -->
-    <div class="carousel-item">
-      <div class="header-slide">
-        <img src="assets/imagens/tenis.jpg" alt="Tênis" class="header-img">
-        <div class="overlay"></div>
-        <div class="container d-flex flex-column justify-content-center align-items-center header-content">
-          <h1 class="text-center text-white">Quadras de Tênis</h1>
-          <h2 class="text-center text-white">Pratique Tênis com Conforto</h2>
-        </div>
-      </div>
-    </div>
 
-    <!-- Vôlei -->
-    <div class="carousel-item">
-      <div class="header-slide">
-        <img src="assets/imagens/volei.jpg" alt="Vôlei" class="header-img">
-        <div class="overlay"></div>
-        <div class="container d-flex flex-column justify-content-center align-items-center header-content">
-          <h1 class="text-center text-white">Quadras de Areia</h1>
-          <h2 class="text-center text-white">Partidas e Treinos de Vôlei</h2>
-        </div>
+      <!-- Usuários Cadastrados -->
+      <div class="col-12 col-md-6">
+        <a
+          class="atalho-card atalho-card-grande"
+          routerLink="/usuarios/listar"
+        >
+          <div class="atalho-icon">📋</div>
+          <h2>Usuários Cadastrados</h2>
+          <p>Veja a lista de usuários já existentes.</p>
+        </a>
       </div>
-    </div>
 
-    <!-- Padel -->
-    <div class="carousel-item">
-      <div class="header-slide">
-        <img src="assets/imagens/padel.jpeg" alt="Padel" class="header-img">
-        <div class="overlay"></div>
-        <div class="container d-flex flex-column justify-content-center align-items-center header-content">
-          <h1 class="text-center text-white">Quadras de Padel</h1>
-          <h2 class="text-center text-white">Quadras de Padel à Sua Disposição</h2>
-        </div>
+      
+      <!-- Cadastrar Atividades -->
+      <div class="col-12 col-md-6">
+        <a
+          class="atalho-card atalho-card-grande"
+          routerLink="/atividades/cadastrar"
+        >
+          <div class="atalho-icon">📝</div>
+          <h2>Cadastrar Atividades</h2>
+          <p>Registre novas atividades no sistema.</p>
+        </a>
       </div>
-    </div>
 
+
+      <!-- Listar Atividades -->
+      <div class="col-12 col-md-6">
+        <a
+          class="atalho-card atalho-card-grande"
+          routerLink="/atividades/listar"
+        >
+          <div class="atalho-icon">✅</div>
+          <h2>Atividades cadastradas</h2>
+          <p>Consulte as atividades cadastradas.</p>
+        </a>
+      </div>
+
+    </div>
   </div>
-
-  <!-- SETAS / CONTROLES -->
-  <button class="carousel-control-prev" type="button" data-bs-target="#headerCarousel" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Anterior</span>
-  </button>
-
-  <button class="carousel-control-next" type="button" data-bs-target="#headerCarousel" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Próximo</span>
-  </button>
-</div>
+</section>

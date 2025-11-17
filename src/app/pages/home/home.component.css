@@ -1,0 +1,30 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #111827, #1f2933);
+}
+
+.atalhos-header {
+  padding: 60px 0;
+  background: transparent;
+}
+
+:host {
+  display: block;
+  min-height: 100vh; /* ocupa a altura inteira da tela */
+  background: linear-gradient(135deg, #111827, #1f2933); /* fundo azul/escuro da home */
+}
+
+/* Seção dos cards em cima do fundo do :host */
+.atalhos-header {
+  padding: 20px 0;                     /* menos padding = menos rolagem */
+  min-height: calc(100vh - 160px);     /* altura mínima, ajusta pro header/footer */
+  display: flex;
+  align-items: center;                 /* centraliza verticalmente */
+  justify-content: center;             /* garante que tudo fique bem no meio */
+  background: transparent;             /* deixa ver o fundo do :host */
+}
+
+.atalhos-header .container {
+  max-width: 960px;                    /* deixa o grid mais compacto no centro */
+}
